@@ -1,0 +1,20 @@
+.img_slider {
+  height: 90vh;
+  /* header is 10vh */
+  box-sizing: border-box;
+  border-bottom: 3px solid black;
+}
+.img_slider div,
+.img_slider img {
+  height: 100%;
+  width: 100%;
+}
+
+.double_text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.double_text div {
+  width: 45%;
+}

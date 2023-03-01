@@ -1,0 +1,49 @@
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+
+/* margin on side  */
+.spacing {
+  margin: 0 18%;
+}
+/* fonts  */
+p {
+  font-family: "Dosis", sans-serif;
+  margin: 0px;
+  margin-bottom: 0.4em;
+  
+  font-size: 25px;
+  color: #737373;
+}
+
+h1,
+h2 {
+  font-family: "Josefin Slab", sans-serif;
+  margin: 0px;
+  font-size: 25px;
+  color: #ad7a5a;
+}
+a,
+li {
+  font-family: "Julius Sans One", sans-serif;
+}
+
+/* h1 container */
+.title_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-top: 70px;
+  margin-bottom: 40px;
+
+  box-sizing: border-box;
+  border-top: double #b78e75 5px;
+  border-bottom: double #b78e75 5px;
+}
