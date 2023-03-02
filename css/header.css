@@ -20,8 +20,15 @@ header a {
 
   text-decoration: none;
   color: black;
-  background-color: antiquewhite;
+  transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
 }
 header a:hover {
-  background-color: rgb(253, 229, 198);
+  background-color: #c8a997;
+  color: #fff;
+}
+
+/* background color for current page */
+.current_background{
+  background-color: #b78e75;
+  color: #fff;
 }

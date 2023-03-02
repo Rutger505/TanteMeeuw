@@ -1,13 +1,17 @@
 .img_slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 90vh;
   /* header is 10vh */
+
   box-sizing: border-box;
-  border-bottom: 3px solid black;
-}
-.img_slider div,
-.img_slider img {
-  height: 100%;
-  width: 100%;
+  border-bottom: 2px solid black;
+
+  background-image: url(../img/img_slider\ 1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
 
 .double_text {
@@ -17,4 +21,8 @@
 }
 .double_text div {
   width: 45%;
+}
+
+p {
+  margin-bottom: 280px;
 }

@@ -1,6 +1,14 @@
 footer {
-  margin-top: 50px!important;
+  padding-top: 30px !important;
 
-  border-top: double 4px #b78e75;
   background-color: #f7f7f7;
 }
+footer div {
+  padding-top: 20px;
+  border-top: double 3px #b78e75;
+}
+footer p{
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
