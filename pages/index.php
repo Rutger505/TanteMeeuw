@@ -15,6 +15,7 @@
     <script src="../script/header.js"></script>
     <script src="../script/footer.js"></script>
     <script src="../script/pageIndicator.js" defer></script>
+    <script src="../script/imgSlider.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -6,7 +6,7 @@ class MyHeader extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `<header>
-        <div class="img_slider">
+        <div class="img-slider back-bottom">
             <h1>Tante Meeuw</h1>
             <h2>in je element</h2>
         </div>
