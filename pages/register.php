@@ -28,27 +28,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <custom-header></custom-header>
+
     <div class="container">
         <div class="content">
             <div class="title_box">
-                <h2>Hier kun je lezen hoe gasten het verblijf hebben ervaren....
-                    en kun je kwijt hoe jij het vond.</h2>
+                <h2>Register</h2>
             </div>
+            <form name="inlogform" action="login.php" method="POST">
+                <input type="text" placeholder="username" name="username" autofocus required>
+                <input type="password" placeholder="password" name="password" required>
 
-            <p>
-                Tante Meeuw is onze fraai ingerichte tent op Vlieland. De tent staat in de
-                duinen, aan zee, op Kampeerterrein Stortemelk en is te huur. We verhuren
-                de tent als we er zelf niet zijn. Wil je de tent huren of ben je
-                nieuwsgierig? Kijk dan verder..........
-            </p>
+                <input type="submit" value="Register" name="submit" required>
+            </form>
+                <p class="font-small">Already have an account? <a href="login.php">Login</a></p>
+            <?php
+            require 'conn.php';
+
+            if (isset($_POST['submit'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                $query = "INSERT INTO users (username, password)VALUES (?, ?)";
+
+                $stmt = $conn->prepare($query);
+                $stmt->execute([$username, $password]);
+
+                echo "new record created <br>";
+            }
+            ?>
         </div>
     </div>
     <div class="fill"></div>

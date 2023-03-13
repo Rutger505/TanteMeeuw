@@ -7,6 +7,7 @@ const pageButton = document.getElementsByClassName("page-button");
 // get img slider
 const imgSlider = document.getElementsByClassName("img_slider");
 
+
 // set background color
 if (page == "index.php") {
   pageButton[0].classList.add("current-page");
@@ -24,7 +25,7 @@ if (page == "index.php") {
   pageButton[6].classList.add("current-page");
 } else if (page == "nieuws.php") {
   pageButton[7].classList.add("current-page");
-} else if (page == "login.php") {
+} else if (page == "login.php" || page == "register.php") {
   pageButton[8].classList.add("current-page");
   imgSlider[0].style.display = "none";
 } else {

@@ -38,33 +38,32 @@
             <div class="title_box">
                 <h2>Login</h2>
             </div>
-            <form class="spacing" name="inlogform" action="login.php" method="POST">
-                <input type="text" placeholder="username" name="username" autofocus>
-                <input type="password" placeholder="password" name="password">
+            <form name="inlogform" action="login.php" method="POST">
+                <input type="text" placeholder="username" name="username" autofocus required>
+                <input type="password" placeholder="password" name="password" required>
 
-                <input type="submit" value="Submit" name="submit">
+                <input type="submit" value="Login" name="submit" required>
             </form>
+                <p class="font-small">No account? <a href="register.php">Register</a></p>
             <?php
-            require 'conn.php';
+            // hoort bij register #############
+            // require 'conn.php';
 
-            if (isset($_POST['submit'])) {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
+            // if (isset($_POST['submit'])) {
+            //     $username = $_POST['username'];
+            //     $password = $_POST['password'];
 
-                $query = "INSERT INTO users (username, password)VALUES (?, ?)";
+            //     $query = "INSERT INTO users (username, password)VALUES (?, ?)";
 
-                $stmt = $conn->prepare($query);
-                $stmt->execute([$username, $password]);
+            //     $stmt = $conn->prepare($query);
+            //     $stmt->execute([$username, $password]);
 
-                echo "new record created";
-            }
+            //     echo "new record created <br>";
+            // }
             ?>
         </div>
     </div>
-
-
-
-
+    <div class="fill"></div>
     <custom-footer></custom-footer>
 </body>
 

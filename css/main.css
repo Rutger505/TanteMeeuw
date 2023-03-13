@@ -3,10 +3,13 @@ html,
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin: 0px;
   padding: 0px;
   min-height: 100vh;
+}
+
+.fill{
+  flex-grow: 1;
 }
 .spacing {
   margin-left: 21%;
@@ -18,6 +21,7 @@ body {
 }
 .content {
   max-width: 893px;
+  width: 100%;
   margin: 5% auto;
 }
 
@@ -52,23 +56,16 @@ li {
   border-bottom: double #b78e75 3px;
 }
 
+.font-small{
+  font-size: 15px;
+}
 /* to show wich pages are not made */
 .unavailable{
   background-color: #d2d2d2;
 }
 /* end root */
 /* index */
-p {
-  margin-bottom: 280px;
-}
 /* index end*/
-/* login page */
-form {
-  width: 10%;
-  display: flex;
-  flex-direction: column;
-}
-/* login page end*/
 /* de tent */
 .double_text {
   display: flex;
@@ -89,3 +86,16 @@ form {
   color: #737373;
 }
 /* de tent end */
+/* login/register page */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 80px;
+}
+form input{
+  height: 20px;
+}
+
+/* login/register page end*/

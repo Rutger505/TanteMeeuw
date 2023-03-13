@@ -102,6 +102,7 @@
         <h1>Kortom: Tante Meeuw is een sfeervolle tent waarin je je thuis kunt voelen.</h1>
     </div>
 
+    <div class="fill"></div>
     <custom-footer></custom-footer>
 </body>
 

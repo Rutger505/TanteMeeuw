@@ -20,10 +20,11 @@ class MyHeader extends HTMLElement {
                 <li><a class="page-button" href="links.php">links</a></li>
                 <li><a class="page-button" href="gasten.php">Gasten</a></li>
                 <li><a class="page-button" href="nieuws.php">Nieuws</a></li>
-                <li><a class="page-button" href="login.php">LOGIN!</a></li>
+                <li><a class="page-button" href="login.php">Login</a></li>
             </ul>
         </nav>
     </header>`;
   }
 }
 customElements.define("custom-header", MyHeader);
+  
