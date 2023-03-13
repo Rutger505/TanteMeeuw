@@ -1,5 +1,5 @@
 footer {
-  padding-top: 30px !important;
+  padding-top: 30px;
 
   background-color: #f7f7f7;
 }
@@ -7,8 +7,24 @@ footer div {
   padding-top: 20px;
   border-top: double 3px #b78e75;
 }
-footer p{
+footer p {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
+.footer_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer a {
+  font-family: "Dosis", sans-serif;
+}
+
+.smallp {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 13px;
+  width: 87px;
+}

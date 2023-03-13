@@ -1,0 +1,91 @@
+/* root */
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+.spacing {
+  margin-left: 21%;
+  margin-right: 21%;
+}
+
+.container {
+  display: flex;
+}
+.content {
+  max-width: 893px;
+  margin: 5% auto;
+}
+
+/* fonts + sizes */
+p {
+  font-family: "Dosis", sans-serif;
+  font-size: 22px;
+  color: #737373;
+}
+h1,
+h2 {
+  font-family: "Josefin Slab", sans-serif;
+  font-weight: 400;
+  margin: 0px;
+  font-size: 26px;
+  color: #ad7a5a;
+}
+a,
+li {
+  font-family: "Julius Sans One", sans-serif;
+}
+/* h1 container */
+.title_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 40px;
+
+  box-sizing: border-box;
+  border-top: double #b78e75 3px;
+  border-bottom: double #b78e75 3px;
+}
+
+/* to show wich pages are not made */
+.unavailable{
+  background-color: #d2d2d2;
+}
+/* end root */
+/* index */
+p {
+  margin-bottom: 280px;
+}
+/* index end*/
+/* login page */
+form {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+}
+/* login page end*/
+/* de tent */
+.double_text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.double_text div {
+  width: 45%;
+}
+.double_text p {
+  margin: 0.4em;
+}
+
+.double_text a {
+  font-size: 22;
+  font-family: "Dosis", sans-serif;
+  margin: 0;
+  color: #737373;
+}
+/* de tent end */
