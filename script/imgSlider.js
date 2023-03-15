@@ -1,53 +1,47 @@
-const imgSliderE = document.getElementsByClassName("img-slider");
+const imgSliderE = document.getElementsB("img-slider");
 
 const amountPhotos = 7;
+var classesArray = ["back-top", "back-center", "back-bottom"]
 
 var i = 2;
 setInterval(() => {
     imgSliderE[0].style.backgroundImage = " url('../img/img-slider"+i+".jpg')";
 
+    clearClass(imgSliderE, classesArray);
     switch(i){
         case 1:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-bottom");
             break;
         case 2:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         case 3:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         case 4:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         case 5:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         case 6:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         case 7:
-            clearClass(imgSliderE);
             imgSliderE[0].classList.add("back-center");
             break;
         default:
-            console.log("default")
+            console.log("default");
     }
-
 
     i++;
     if (i > amountPhotos) {
         i = 1;
     }
-}, 3000);
+}, 1000);
   
-function clearClass(p1) {
-    p1[0].classList.remove("back-top")
-    p1[0].classList.remove("back-center")
-    p1[0].classList.remove("back-bottom")
-  }
+function clearClass(element, classes) {
+    for (i = 0; i < classes.length; i++){
+        element[0].classList.remove(classes[i])
+    }
+}

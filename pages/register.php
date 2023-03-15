@@ -38,7 +38,7 @@
             <div class="title_box">
                 <h2>Register</h2>
             </div>
-            <form name="inlogform" action="login.php" method="POST">
+            <form name="inlogform" action="register.php" method="POST">
                 <input type="text" placeholder="username" name="username" autofocus required>
                 <input type="password" placeholder="password" name="password" required>
 
@@ -46,14 +46,26 @@
             </form>
                 <p class="font-small">Already have an account? <a href="login.php">Login</a></p>
             <?php
+            // connection to database
             require 'conn.php';
 
+            // if form submitted
             if (isset($_POST['submit'])) {
+                // get input from form into vars
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                $query = "INSERT INTO users (username, password)VALUES (?, ?)";
+                if (strlen($username) > 15){
+                    echo"larger than 15";
+                }
+                if($username[0][0] == "r"){
+                    echo "there is an r";
+                }
 
+
+
+                // insert user an pass into database
+                $query = "INSERT INTO users (username, password)VALUES (?, ?)";
                 $stmt = $conn->prepare($query);
                 $stmt->execute([$username, $password]);
 

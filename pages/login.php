@@ -39,27 +39,35 @@
                 <h2>Login</h2>
             </div>
             <form name="inlogform" action="login.php" method="POST">
-                <input type="text" placeholder="username" name="username" autofocus required>
-                <input type="password" placeholder="password" name="password" required>
+                <input name="username" type="text" placeholder="username"  autofocus required>
+                <input name="password" type="password" placeholder="password"  required>
 
-                <input type="submit" value="Login" name="submit" required>
+                <input name="submit" type="submit" value="Login" >
             </form>
-                <p class="font-small">No account? <a href="register.php">Register</a></p>
+            <p class="font-small">No account? <a href="register.php">Register</a></p>
             <?php
-            // hoort bij register #############
-            // require 'conn.php';
+            // connection to database
+            require_once 'conn.php';
 
-            // if (isset($_POST['submit'])) {
-            //     $username = $_POST['username'];
-            //     $password = $_POST['password'];
+            // if form submitted
+            if (isset($_POST['submit'])) {
+                // get input from form into vars
+                $username = $_POST['username'];
+                $password = $_POST['password'];
 
-            //     $query = "INSERT INTO users (username, password)VALUES (?, ?)";
+                // getting username/password
+                $stmt = $conn->prepare("SELECT username, password FROM users WHERE username=:username AND password=:password");
+                $stmt->execute(['username' => $username, 'password' => $password]);
+                $user = $stmt->fetch();
 
-            //     $stmt = $conn->prepare($query);
-            //     $stmt->execute([$username, $password]);
-
-            //     echo "new record created <br>";
-            // }
+                // logged in or not
+                if ($user != false) {
+                    echo "login succes <br>";
+                    echo "welcome " .$user['username'] . " <br> password: " . $user['password'] . "<br>";
+                } else {
+                    echo "account does not exist lel <br>";
+                }
+            }
             ?>
         </div>
     </div>
