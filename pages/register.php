@@ -55,15 +55,6 @@
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                if (strlen($username) > 15){
-                    echo"larger than 15";
-                }
-                if($username[0][0] == "r"){
-                    echo "there is an r";
-                }
-
-
-
                 // insert user an pass into database
                 $query = "INSERT INTO users (username, password)VALUES (?, ?)";
                 $stmt = $conn->prepare($query);

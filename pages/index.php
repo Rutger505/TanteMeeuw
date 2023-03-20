@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 
-    <!-- custom header/footer element -->
-    <script src="../script/header.js"></script>
-    <script src="../script/footer.js"></script>
+    <!-- scripts -->
     <script src="../script/pageIndicator.js" defer></script>
     <script src="../script/imgSlider.js" defer></script>
 
@@ -36,7 +34,9 @@
 </head>
 
 <body>
-    <custom-header></custom-header>
+    <?php
+        include "../script/header.html"
+    ?>
 
     <div class="container">
         <div class="content">
@@ -54,7 +54,9 @@
     </div>
 
     <div class="fill"></div>
-    <custom-footer></custom-footer>
+    <?php
+        include "../script/footer.html"
+    ?>
 </body>
 
 </html>
