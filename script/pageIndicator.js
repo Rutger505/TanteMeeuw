@@ -5,7 +5,7 @@ const page = path.split("/").pop();
 // get page buttons
 const pageButton = document.getElementsByClassName("page-button");
 // get img slider
-const imgSlider = document.getElementsByClassName("img_slider");
+const imgSlider = document.getElementsByClassName("img-slider");
 
 
 // set background color
