@@ -15,14 +15,6 @@
   align-items: center;
   width: 100%;
 }
-.opacity-0 {
-  opacity: 0;
-  transition: opacity ease-in-out 1s;
-}
-.opacity-1 {
-  opacity: 1 !important;
-  transition: opacity ease-in-out 1s;
-}
 
 /* slider buttons */
 .img-slider-button {

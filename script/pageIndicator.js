@@ -10,24 +10,34 @@ const imgSlider = document.getElementById("img-slider");
 
 // set background color
 if (page == "index.php") {
-  pageButton[0].classList.add("current-page");
+  setCurrentPage(pageButton[0]);
 } else if (page == "deTent.php") {
-  pageButton[1].classList.add("current-page");
+  setCurrentPage(pageButton[1]);
 } else if (page == "omgeving.php") {
-  pageButton[2].classList.add("current-page");
+  setCurrentPage(pageButton[2]);
 } else if (page == "beschikbaarheid.php") {
-  pageButton[3].classList.add("current-page");
+  setCurrentPage(pageButton[3]);
 } else if (page == "contact.php") {
-  pageButton[4].classList.add("current-page");
+  setCurrentPage(pageButton[4]);
 } else if (page == "links.php") {
-  pageButton[5].classList.add("current-page");
+  setCurrentPage(pageButton[5]);
 } else if (page == "gasten.php") {
-  pageButton[6].classList.add("current-page");
+  setCurrentPage(pageButton[6]);
 } else if (page == "nieuws.php") {
-  pageButton[7].classList.add("current-page");
+  setCurrentPage(pageButton[7]);
 } else if (page == "login.php" || page == "register.php") {
-  pageButton[8].classList.add("current-page");
-  imgSlider.style.display = "none";
+  setCurrentPage(pageButton[8]);
+  hideImgSlider();
+} else if (page == "admin.php") {
+  hideImgSlider();
+  setCurrentPage(pageButton[9]);
 } else {
-  pageButton[0].classList.add("current-page");
+  setCurrentPage(pageButton[0]);
+}
+
+function setCurrentPage(element) {
+  element.classList.add("current-page");
+}
+function hideImgSlider() {
+  imgSlider.style.display = "none";
 }

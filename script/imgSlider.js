@@ -46,44 +46,30 @@ function setSlider() {
   switch (i) {
     case 1:
       imgSliderE.classList.add("back-bottom");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "in je element";
       break;
     case 2:
       imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "je thuisvoelen";
       break;
     case 3:
       imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "met alles wat je nodig hebt";
       break;
     case 4:
       imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "in een stoere tent";
       break;
     case 5:
       imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "één duin verwijderd van zee";
       break;
     case 6:
       imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
       imgSliderDiscription.innerHTML = "op het heerlijke Vlieland";
       break;
     case 7:
-      imgSliderE.classList.add("back-center");
-      imgSliderE.classList.add("opacity-0");
-      imgSliderE.classList.add("opacity-1");
+      imgSliderE.classList.add("back-center")
       imgSliderDiscription.innerHTML = "voor een onvergetelijke tijd....";
       break;
     default:
