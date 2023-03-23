@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +15,9 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 
-    <!-- custom header/footer element -->
-    <script src="../script/header.js"></script>
-    <script src="../script/footer.js"></script>
+    <!-- scripts -->
     <script src="../script/pageIndicator.js" defer></script>
+    <script src="../script/imgSlider.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +34,9 @@
 </head>
 
 <body>
-    <custom-header></custom-header>
+    <?php
+    include "../script/header.html"
+    ?>
 
     <div class="container">
         <div class="content">
@@ -44,29 +49,37 @@
 
                 <input type="submit" value="Register" name="submit" required>
             </form>
-                <p class="font-small">Already have an account? <a href="login.php">Login</a></p>
+            <p class="font-small">Already have an account? <a href="login.php">Login</a></p>
             <?php
-            // connection to database
-            require 'conn.php';
-
             // if form submitted
-            if (isset($_POST['submit'])) {
-                // get input from form into vars
-                $username = $_POST['username'];
-                $password = $_POST['password'];
+            if (!isset($_POST['submit'])) {
+                exit;
+            }
+            // get input from form into vars
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
+            // search for same account
+            $stmt = $conn->prepare("SELECT username, password FROM users WHERE username=:username");
+            $stmt->execute(['username' => $username]);
+            $user_exist = $stmt->fetch();
+
+            if (!$user_exist) {
                 // insert user an pass into database
                 $query = "INSERT INTO users (username, password)VALUES (?, ?)";
                 $stmt = $conn->prepare($query);
                 $stmt->execute([$username, $password]);
-
                 echo "new record created <br>";
+            } else {
+                echo"username already taken";
             }
             ?>
         </div>
     </div>
     <div class="fill"></div>
-    <custom-footer></custom-footer>
+    <?php
+    include "../script/footer.html"
+    ?>
 </body>
 
 </html>

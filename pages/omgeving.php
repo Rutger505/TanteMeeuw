@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 
-    <!-- custom header/footer element -->
-    <script src="../script/header.js"></script>
-    <script src="../script/footer.js"></script>
+    <!-- scripts -->
     <script src="../script/pageIndicator.js" defer></script>
+    <script src="../script/imgSlider.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,12 +34,16 @@
 </head>
 
 <body>
-    <custom-header></custom-header>
+    <?php
+        include "../script/header.html"
+    ?>
 
     
 
     <div class="fill"></div>
-    <custom-footer></custom-footer>
+    <?php
+        include "../script/footer.html"
+    ?>
 </body>
 
 </html>

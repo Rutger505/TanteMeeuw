@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
 }
 
-.fill{
+.fill {
   flex-grow: 1;
 }
 .spacing {
@@ -32,7 +32,7 @@ p {
   color: #737373;
 }
 h1,
-h2 {
+h2, h3 {
   font-family: "Josefin Slab", sans-serif;
   font-weight: 400;
   margin: 0px;
@@ -50,17 +50,21 @@ li {
   align-items: center;
   height: 100px;
   margin-bottom: 40px;
+  padding-left: 130px;
+  padding-right: 130px;
+
+  text-align: center;
 
   box-sizing: border-box;
   border-top: double #b78e75 3px;
   border-bottom: double #b78e75 3px;
 }
 
-.font-small{
+.font-small {
   font-size: 15px;
 }
 /* to show wich pages are not made */
-.unavailable{
+.unavailable {
   background-color: #d2d2d2;
 }
 /* end root */
@@ -94,8 +98,43 @@ form {
   width: 200px;
   height: 80px;
 }
-form input{
+form input {
   height: 20px;
 }
 
 /* login/register page end*/
+/* gasten page */
+.reactie-form{
+  height: 300px;
+}
+.color-brown {
+  color: #b78e75;
+}
+.reaction {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+
+  border: 1px solid #73737333;
+}
+.reaction div {
+  display: flex;
+  justify-content: space-between;
+}
+.reaction h3 {
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+
+  font-weight: 700;
+  color: #737373;
+}
+.reaction p{
+  margin: 0px;
+  padding: 0px;
+}
+/* gasten page end */

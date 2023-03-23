@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once 'conn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +16,9 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 
-    <!-- custom header/footer element -->
-    <script src="../script/header.js"></script>
-    <script src="../script/footer.js"></script>
+    <!-- scripts -->
     <script src="../script/pageIndicator.js" defer></script>
+    <script src="../script/imgSlider.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +35,9 @@
 </head>
 
 <body>
-    <custom-header></custom-header>
+    <?php
+        include "../script/header.html"
+    ?>
 
     <div class="container">
         <div class="content">
@@ -46,9 +52,6 @@
             </form>
             <p class="font-small">No account? <a href="register.php">Register</a></p>
             <?php
-            // connection to database
-            require_once 'conn.php';
-
             // if form submitted
             if (isset($_POST['submit'])) {
                 // get input from form into vars
@@ -61,7 +64,9 @@
                 $user = $stmt->fetch();
 
                 // logged in or not
-                if ($user != false) {
+                if ($user) {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['username'] = $username;
                     echo "login succes <br>";
                     echo "welcome " .$user['username'] . " <br> password: " . $user['password'] . "<br>";
                 } else {
@@ -72,6 +77,8 @@
         </div>
     </div>
     <div class="fill"></div>
-    <custom-footer></custom-footer>
+    <?php
+        include "../script/footer.html"
+    ?>
 </body>
 </html>

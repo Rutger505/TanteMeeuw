@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'conn.php';
+// header('Location: login.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +17,9 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 
-    <!-- custom header/footer element -->
-    <script src="../script/header.js"></script>
-    <script src="../script/footer.js"></script>
+    <!-- scripts -->
     <script src="../script/pageIndicator.js" defer></script>
+    <script src="../script/imgSlider.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +40,9 @@
 </head>
 
 <body>
-    <custom-header></custom-header>
+    <?php
+    include "../script/header.html"
+    ?>
     <div class="container">
         <div class="content">
             <div class="title_box">
@@ -43,16 +50,66 @@
                     en kun je kwijt hoe jij het vond.</h2>
             </div>
 
-            <p>
-                Tante Meeuw is onze fraai ingerichte tent op Vlieland. De tent staat in de
-                duinen, aan zee, op Kampeerterrein Stortemelk en is te huur. We verhuren
-                de tent als we er zelf niet zijn. Wil je de tent huren of ben je
-                nieuwsgierig? Kijk dan verder..........
-            </p>
+            <p class="color-brown">Reactie plaatsen</p>
+
+            <form class="reactie-form" name="reactie-plaatsen" action="gasten.php" method="POST">
+                <input type="text" placeholder="naam" name="naam" required>
+                <input type="text" placeholder="email" name="email" required> <!-- miss email type maken -->
+                <textarea type="text" rows="100" placeholder="bericht" name="bericht" required></textarea>
+
+                <input type="submit" value="Plaatsen" name="submit" required>
+            </form>
+            <?php
+            // if form submitted
+            if (isset($_POST['submit'])) {
+                // get input from form into vars
+                $naam = $_POST['naam'];
+                $email = $_POST['email'];
+                $bericht = $_POST['bericht'];
+                date_default_timezone_set("Europe/Amsterdam");
+                $date = date("d-m-Y");
+
+                // search for same reacion
+                $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
+                $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
+                $reaction_exist = $stmt->fetch();
+
+                if (!$reaction_exist) {
+                    // insert reaction into database
+                    $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute([$naam, $email, $bericht, $date]);
+                }
+            }
+            // getting reaction details
+            $stmt = $conn->prepare("SELECT * FROM reacties");
+            $stmt->execute();
+            $reactie = $stmt->fetchAll();
+
+            // print data
+            foreach ($reactie as $data) {
+                $frame = "
+                <div class='reaction'>
+                    <div>
+                        <h3>" . $data['naam'] . "</h3>
+                        <p>" . $data['date'] . "</p>
+                    </div>
+                    <p style='white-space: pre-line'>"
+                    . $data['bericht'] .
+                    "</p>
+                </div>
+                ";
+                echo $frame;
+            }
+            ?>
+
         </div>
     </div>
+
     <div class="fill"></div>
-    <custom-footer></custom-footer>
+    <?php
+    include "../script/footer.html"
+    ?>
 </body>
 
 </html>

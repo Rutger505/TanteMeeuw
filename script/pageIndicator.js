@@ -5,7 +5,7 @@ const page = path.split("/").pop();
 // get page buttons
 const pageButton = document.getElementsByClassName("page-button");
 // get img slider
-const imgSlider = document.getElementsByClassName("img-slider");
+const imgSlider = document.getElementById("img-slider");
 
 
 // set background color
@@ -27,7 +27,7 @@ if (page == "index.php") {
   pageButton[7].classList.add("current-page");
 } else if (page == "login.php" || page == "register.php") {
   pageButton[8].classList.add("current-page");
-  imgSlider[0].style.display = "none";
+  imgSlider.style.display = "none";
 } else {
   pageButton[0].classList.add("current-page");
 }
