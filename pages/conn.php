@@ -1,4 +1,8 @@
 <?php
+if(session_status() === PHP_SESSION_NONE) {
+    header("Location: index.php");
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
