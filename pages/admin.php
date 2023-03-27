@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once 'conn.php';
+if(!isset($_SESSION['username']) && $_SESSION['rules'] < 10){
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
