@@ -9,26 +9,28 @@ var classesArray = [
   "back-top",
   "back-center",
   "back-bottom",
-  "opacity-1",
-  "opacity-0",
 ];
 const amountPhotos = 7;
 
 let i = 1;
 setSlider();
 
-setInterval(() => {
-  setSlider();
-}, 4000);
+let myInterval = setInterval(setSlider, 4000);
 
 imgSliderLeft.addEventListener("click", (e) => {
-  console.log("this is left one");
+  // restarts interval
+  clearInterval(myInterval);
+  myInterval = setInterval(setSlider, 4000);
+
   i -= 2;
   setSlider();
 });
 
 imgSliderRight.addEventListener("click", (e) => {
-  console.log("this is right one");
+   // restarts interval
+  clearInterval(myInterval);
+  myInterval = setInterval(setSlider, 4000);
+
   i++;
   setSlider();
 });

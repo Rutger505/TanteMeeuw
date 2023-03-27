@@ -41,11 +41,19 @@ if (!isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
     include "../webcomponents/header.php"
     ?>
 
-    <div>die hard</div>
+    <div class="container">
+        <div class="content">
+            <div class="title_box">
+                <h1>Admin panel</h1>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="fill"></div>
     <?php
-    include "../webomponents/footer.php"
+    include "../webcomponents/footer.php"
     ?>
 </body>
 
