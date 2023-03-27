@@ -59,16 +59,16 @@ require_once 'conn.php';
                 $password = $_POST['password'];
 
                 // getting username/password
-                $stmt = $conn->prepare("SELECT username, password FROM users WHERE username=:username AND password=:password");
+                $stmt = $conn->prepare("SELECT * FROM users WHERE username=:username AND password=:password");
                 $stmt->execute(['username' => $username, 'password' => $password]);
                 $user = $stmt->fetch();
 
                 // logged in or not
                 if ($user) {
-                    $_SESSION['username'] = $username;
-                    // $_SESSION['id'] = $username;
-                    echo "login succes <br>";
-                    echo "welcome " . $user['username'] . " <br> password: " . $user['password'] . "<br>";
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['rules'] = $user['rules'];
+                    $_SESSION['id'] = $user['id'];
+                    header("Location: login.php");
                 } else {
                     echo "account does not exist lel <br>";
                 }

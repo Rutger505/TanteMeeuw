@@ -29,17 +29,29 @@
       <li><a class="page-button" href="links.php">links</a></li>
       <li><a class="page-button" href="gasten.php">Gasten</a></li>
       <li><a class="page-button" href="nieuws.php">Nieuws</a></li>
+
+      <?php if (!isset($_SESSION['username'])):?>
       <li><a class="page-button" href="login.php">Login</a></li>
-      <li><a class="page-button" href="admin.php">admin</a></li>
+      <?php endif; ?>
+
+      <?php if (isset($_SESSION['username'])):?>
+        <li><a class="page-button" href="logout.php">Logout</a></li>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['username']) && $_SESSION['rules'] < 10): ?>
+        <li><a class="page-button" href="admin.php">admin</a></li>
+      <?php endif; ?>
+
     </ul>
   </nav>
 </header>
+
 <?php
 if (isset($_SESSION['username'])) {
-  echo "logged in as: ";
-  echo $_SESSION['username']."<br>";
+  echo "logged in as: " . $_SESSION['username'] . "<br>";
+  echo "rules: " . $_SESSION['rules'] . "<br>";
+  echo "id: " . $_SESSION['id'] . "<br>";
   var_dump($_SESSION);
 } else {
   echo "not logged in";
 }
-?> 
+?>
