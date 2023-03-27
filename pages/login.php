@@ -39,7 +39,7 @@ if(isset($_SESSION['username'])){
 
 <body>
     <?php
-    include "../webComponents/header.php"
+    include "../webcomponents/header.php"
     ?>
 
     <div class="container">
@@ -81,7 +81,7 @@ if(isset($_SESSION['username'])){
     </div>
     <div class="fill"></div>
     <?php
-    include "../webComponents/footer.php"
+    include "../webcomponents/footer.php"
     ?>
 </body>
 

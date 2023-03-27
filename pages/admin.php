@@ -1,12 +1,13 @@
 <?php
 session_start();
 require_once 'conn.php';
-if(!isset($_SESSION['username']) && $_SESSION['rules'] < 10){
+if (!isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
     header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,14 +38,15 @@ if(!isset($_SESSION['username']) && $_SESSION['rules'] < 10){
 
 <body>
     <?php
-    include "../webComponents/header.php"
+    include "../webcomponents/header.php"
     ?>
 
     <div>die hard</div>
-    
+
     <div class="fill"></div>
     <?php
-        include "../webComponents/footer.php"
+    include "../webomponents/footer.php"
     ?>
 </body>
+
 </html>
