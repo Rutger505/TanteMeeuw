@@ -3,7 +3,7 @@
     <div class="img-slider-container">
       <button id="img-slider-left" class="img-slider-button">
         <div class="margin-left">
-            <div class="arrow left"></div>
+          <div class="arrow left"></div>
         </div>
       </button>
       <div>
@@ -12,7 +12,7 @@
       </div>
       <button id="img-slider-right" class="img-slider-button">
         <div class="margin-right">
-            <div class="arrow right"></div>
+          <div class="arrow right"></div>
         </div>
       </button>
     </div>
@@ -23,9 +23,7 @@
       <li><a class="page-button" href="deTent.php">De tent</a></li>
       <li><a class="page-button" href="omgeving.php">Omgeving</a></li>
       <li>
-        <a class="page-button" href="beschikbaarheid.php"
-          >Beschikbaarheid/Prijzen</a
-        >
+        <a class="page-button" href="beschikbaarheid.php">Beschikbaarheid/Prijzen</a>
       </li>
       <li><a class="page-button" href="contact.php">Contact</a></li>
       <li><a class="page-button" href="links.php">links</a></li>
@@ -36,3 +34,12 @@
     </ul>
   </nav>
 </header>
+<?php
+if (isset($_SESSION['username'])) {
+  echo "logged in as: ";
+  echo $_SESSION['username']."<br>";
+  var_dump($_SESSION);
+} else {
+  echo "not logged in";
+}
+?> 

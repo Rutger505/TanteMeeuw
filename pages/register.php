@@ -35,7 +35,7 @@ require_once 'conn.php';
 
 <body>
     <?php
-    include "../script/header.html"
+    include "../webComponents/header.php"
     ?>
 
     <div class="container">
@@ -69,16 +69,16 @@ require_once 'conn.php';
                 $query = "INSERT INTO users (username, password)VALUES (?, ?)";
                 $stmt = $conn->prepare($query);
                 $stmt->execute([$username, $password]);
-                echo "new record created <br>";
+                echo "Account created succesfully <br>";
             } else {
-                echo"username already taken";
+                echo "username already taken <br>";
             }
             ?>
         </div>
     </div>
     <div class="fill"></div>
     <?php
-    include "../script/footer.html"
+    include "../webComponents/footer.php"
     ?>
 </body>
 

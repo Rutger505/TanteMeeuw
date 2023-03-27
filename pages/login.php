@@ -36,7 +36,7 @@ require_once 'conn.php';
 
 <body>
     <?php
-        include "../script/header.html"
+    include "../webComponents/header.php"
     ?>
 
     <div class="container">
@@ -45,10 +45,10 @@ require_once 'conn.php';
                 <h2>Login</h2>
             </div>
             <form name="inlogform" action="login.php" method="POST">
-                <input name="username" type="text" placeholder="username"  autofocus required>
-                <input name="password" type="password" placeholder="password"  required>
+                <input name="username" type="text" placeholder="username" autofocus required>
+                <input name="password" type="password" placeholder="password" required>
 
-                <input name="submit" type="submit" value="Login" >
+                <input name="submit" type="submit" value="Login">
             </form>
             <p class="font-small">No account? <a href="register.php">Register</a></p>
             <?php
@@ -66,9 +66,9 @@ require_once 'conn.php';
                 // logged in or not
                 if ($user) {
                     $_SESSION['username'] = $username;
-                    $_SESSION['username'] = $username;
+                    // $_SESSION['id'] = $username;
                     echo "login succes <br>";
-                    echo "welcome " .$user['username'] . " <br> password: " . $user['password'] . "<br>";
+                    echo "welcome " . $user['username'] . " <br> password: " . $user['password'] . "<br>";
                 } else {
                     echo "account does not exist lel <br>";
                 }
@@ -78,7 +78,8 @@ require_once 'conn.php';
     </div>
     <div class="fill"></div>
     <?php
-        include "../script/footer.html"
+    include "../webComponents/footer.php"
     ?>
 </body>
+
 </html>

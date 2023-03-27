@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,14 +39,14 @@
 
 <body>
     <?php
-        include "../script/header.html"
+    include "../webComponents/header.php"
     ?>
 
-    
+
 
     <div class="fill"></div>
     <?php
-        include "../script/footer.html"
+    include "../webComponents/footer.php"
     ?>
 </body>
 

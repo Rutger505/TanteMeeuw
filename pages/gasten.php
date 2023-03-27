@@ -41,7 +41,7 @@ require_once 'conn.php';
 
 <body>
     <?php
-    include "../script/header.html"
+    include "../webComponents/header.php"
     ?>
     <div class="container">
         <div class="content">
@@ -108,7 +108,7 @@ require_once 'conn.php';
 
     <div class="fill"></div>
     <?php
-    include "../script/footer.html"
+    include "../webComponents/footer.php"
     ?>
 </body>
 
