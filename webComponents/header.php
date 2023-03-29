@@ -1,4 +1,5 @@
 <header>
+  <div id="img-loader"></div>
   <div id="img-slider" class="back-bottom">
     <div class="img-slider-container">
       <button id="img-slider-left" class="img-slider-button">
