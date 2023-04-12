@@ -4,7 +4,7 @@ require_once '../utils/conn.php';
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
 }
-if (!($_SESSION['rules'] < 10)) {
+if (!$_SESSION['rules'] < 10) {
     header("Location: index.php");
 }
 

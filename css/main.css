@@ -94,12 +94,16 @@ li {
 form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 200px;
+  row-gap:  2px;
+  width: 250px;
   height: 80px;
 }
 form input {
   height: 20px;
+}
+textarea{
+  resize: none;
+  flex-grow: 1;
 }
 
 /* login/register page end*/

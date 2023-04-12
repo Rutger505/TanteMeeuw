@@ -2,6 +2,10 @@
 session_start();
 require_once 'conn.php';
 
+if ($_SESSION['rules'] < 10) {
+    header("Location: ../pages/index.php");
+}
+
 $id = $_GET['id'];
 
 $query = "SELECT * FROM reacties WHERE id = :id";
@@ -17,11 +21,12 @@ $preData = $stmt->fetch();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit document</title>
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
-    <form naam="edit-menu-item" action="editRevieuw.php?id=<? echo $id; ?>" method="POST">
+    <form class="reactie-form" naam="edit-menu-item" action="editRevieuw.php?id=<? echo $id; ?>" method="POST">
 
         <input name='name' type="text" value="<? echo $preData['naam'] ?>" required>
 
