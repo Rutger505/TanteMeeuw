@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'conn.php';
-if(isset($_SESSION['username'])){
+require_once '../utils/conn.php';
+if (isset($_SESSION['username'])) {
     header("Location: admin.php");
 }
 ?>
@@ -56,26 +56,29 @@ if(isset($_SESSION['username'])){
             <p class="font-small">No account? <a href="register.php">Register</a></p>
             <?php
             // if form submitted
-            if (isset($_POST['submit'])) {
-                // get input from form into vars
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-
-                // getting username/password
-                $stmt = $conn->prepare("SELECT * FROM users WHERE username=:username AND password=:password");
-                $stmt->execute(['username' => $username, 'password' => $password]);
-                $user = $stmt->fetch();
-
-                // logged in or not
-                if ($user) {
-                    $_SESSION['username'] = $user['username'];
-                    $_SESSION['rules'] = $user['rules'];
-                    $_SESSION['id'] = $user['id'];
-                    header("Location: login.php");
-                } else {
-                    echo "account does not exist lel <br>";
-                }
+            if (!isset($_POST['submit'])) {
+                exit();
             }
+            
+            // get input from form into vars
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            // getting username/password
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username=:username AND password=:password");
+            $stmt->execute(['username' => $username, 'password' => $password]);
+            $user = $stmt->fetch();
+
+            // logged in or not
+            if ($user) {
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['rules'] = $user['rules'];
+                $_SESSION['id'] = $user['id'];
+                header("Location: login.php");
+            } else {
+                echo "account does not exist lel <br>";
+            }
+
             ?>
         </div>
     </div>

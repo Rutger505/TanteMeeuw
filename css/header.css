@@ -146,4 +146,7 @@ header a:hover {
   background-color: #b78e75;
   color: #fff;
 }
+.unavailable-page {
+  background-color: #d8d8d8;
+}
 /* navigation end */

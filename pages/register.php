@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conn.php';
+require_once '../utils/conn.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,10 +51,10 @@ require_once 'conn.php';
             </form>
             <p class="font-small">Already have an account? <a href="login.php">Login</a></p>
             <?php
-            // if form submitted
             if (!isset($_POST['submit'])) {
                 exit;
             }
+
             // get input from form into vars
             $username = $_POST['username'];
             $password = $_POST['password'];

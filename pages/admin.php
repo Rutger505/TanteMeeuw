@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conn.php';
+require_once '../utils/conn.php';
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
 }
@@ -49,7 +49,30 @@ if (!($_SESSION['rules'] < 10)) {
             <div class="title_box">
                 <h1>Admin panel</h1>
             </div>
-            <p>oki</p>
+            <p class="color-brown">Add admins</p>
+
+            <?php
+
+            // search for same account
+            $stmt = $conn->prepare("SELECT id, username, rules FROM users");
+            $stmt->execute();
+            $users = $stmt->fetchAll();
+
+            echo "<div class='make-admin-container'>";
+            foreach($users as $user){
+                
+                $data = "
+                        <div class='make-admin'>
+                            <p class='margin-0'>".$user['username']."</p>
+                            <p class='margin-0'>".$user['rules']."</p> 
+                            <a href='../utils/makeAdmin.php?id=".$user['id']."'> Make admin</a>
+                        </div>
+                        ";
+                echo $data;
+            }
+            echo "</div>";
+            ?>
+
         </div>
     </div>
 

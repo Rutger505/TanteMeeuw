@@ -40,7 +40,7 @@ $preData = $stmt->fetch();
             $stmt = $conn->prepare($query);
             $stmt->execute(['naam' => $name, 'bericht' => $bericht, 'id' => $id]);
 
-            header("Location: gasten.php");
+            header("Location: ../pages/gasten.php");
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

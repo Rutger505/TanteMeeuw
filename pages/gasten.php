@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conn.php';
+require_once '../utils/conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,28 +58,6 @@ require_once 'conn.php';
 
                 <input type="submit" value="Plaatsen" name="submit" required>
             </form>
-            <?php
-            if (isset($_POST['submit'])) {
-                $naam = $_POST['naam'];
-                $email = $_POST['email'];
-                $bericht = $_POST['bericht'];
-                date_default_timezone_set("Europe/Amsterdam");
-                $date = date("d-m-Y");
-
-
-                // search for same reacion
-                $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
-                $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
-                $reaction_exist = $stmt->fetch();
-
-
-                if (!$reaction_exist) {
-                    $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute([$naam, $email, $bericht, $date]);
-                }
-            }
-            ?>
 
             <p class='color-brown'>Reacties</p>
 
@@ -93,8 +71,8 @@ require_once 'conn.php';
             foreach ($reactie as $data) {
                 // button visable for logged in user that have less than 10 rules?
                 if (isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
-                    $delButton = "<a href='deleteRevieuw.php?id=" . $data['id'] . "'>Delete</a>";
-                    $edditButton = "<a href='editRevieuw.php?id=" . $data['id'] . "'>Edit</a>";
+                    $delButton = "<a href='../utils/deleteRevieuw.php?id=" . $data['id'] . "'>Delete</a>";
+                    $edditButton = "<a href='../utils/editRevieuw.php?id=" . $data['id'] . "'>Edit</a>";
                 }
                 $frame = "
                 <div class='reaction'>
@@ -110,6 +88,33 @@ require_once 'conn.php';
                 ";
                 echo $frame;
             }
+            ?>
+
+            <?php
+            if (!isset($_POST['submit'])) {
+                exit();
+            }
+
+            $naam = $_POST['naam'];
+            $email = $_POST['email'];
+            $bericht = $_POST['bericht'];
+            date_default_timezone_set("Europe/Amsterdam");
+            $date = date("d-m-Y");
+
+
+            // search for same reacion
+            $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
+            $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
+            $reaction_exist = $stmt->fetch();
+
+
+            if (!$reaction_exist) {
+                $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
+                $stmt = $conn->prepare($query);
+                $stmt->execute([$naam, $email, $bericht, $date]);
+                header("Location: gasten.php");
+            }
+
             ?>
         </div>
     </div>
