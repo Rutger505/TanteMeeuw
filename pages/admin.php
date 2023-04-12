@@ -7,6 +7,10 @@ if (!isset($_SESSION['username'])) {
 if (!($_SESSION['rules'] < 10)) {
     header("Location: index.php");
 }
+
+$stmt = $conn->prepare("SELECT id, username, rules FROM users");
+$stmt->execute();
+$users = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,20 +56,37 @@ if (!($_SESSION['rules'] < 10)) {
             <p class="color-brown">Add admins</p>
 
             <?php
+            echo "<div class='change-admin-container'>";
+            foreach ($users as $user) {
+                if ($user['rules'] < 10) {
+                    continue;
+                }
 
-            // search for same account
-            $stmt = $conn->prepare("SELECT id, username, rules FROM users");
-            $stmt->execute();
-            $users = $stmt->fetchAll();
-
-            echo "<div class='make-admin-container'>";
-            foreach($users as $user){
-                
                 $data = "
-                        <div class='make-admin'>
-                            <p class='margin-0'>".$user['username']."</p>
-                            <p class='margin-0'>".$user['rules']."</p> 
-                            <a href='../utils/makeAdmin.php?id=".$user['id']."'> Make admin</a>
+                <div class='change-admin'>
+                    <p class='margin-0'>" . $user['username'] . "</p>
+                    <p class='margin-0'>" . $user['rules'] . "</p> 
+                    <a href='../utils/makeAdmin.php?id=" . $user['id'] . "'>Make admin</a>
+                </div>
+                ";
+                echo $data;
+            }
+            echo "</div>";
+            ?>
+            <p class="color-brown">Remove admins</p>
+            <?php
+
+            echo "<div class='change-admin-container'>";
+            foreach ($users as $user) {
+                if ($user['rules'] >= 10) {
+                    continue;
+                }
+
+                $data = "
+                        <div class='change-admin'>
+                            <p class='margin-0'>" . $user['username'] . "</p>
+                            <p class='margin-0'>" . $user['rules'] . "</p> 
+                            <a href='../utils/removeAdmin.php?id=" . $user['id'] . "'>Remove admin</a>
                         </div>
                         ";
                 echo $data;
