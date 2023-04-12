@@ -1,8 +1,11 @@
 <?php
 session_start();
 require_once 'conn.php';
-if (!isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
+}
+if (!($_SESSION['rules'] < 10)) {
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -46,6 +49,7 @@ if (!isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
             <div class="title_box">
                 <h1>Admin panel</h1>
             </div>
+            <p>oki</p>
         </div>
     </div>
 

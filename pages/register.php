@@ -60,7 +60,7 @@ require_once 'conn.php';
             $password = $_POST['password'];
 
             // search for same account
-            $stmt = $conn->prepare("SELECT username, password FROM users WHERE username=:username");
+            $stmt = $conn->prepare("SELECT username FROM users WHERE username=:username");
             $stmt->execute(['username' => $username]);
             $user_exist = $stmt->fetch();
 

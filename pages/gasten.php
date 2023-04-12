@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'conn.php';
-// header('Location: login.php')
 ?>
 
 <!DOCTYPE html>
@@ -54,33 +53,37 @@ require_once 'conn.php';
 
             <form class="reactie-form" name="reactie-plaatsen" action="gasten.php" method="POST">
                 <input type="text" placeholder="naam" name="naam" required>
-                <input type="text" placeholder="email" name="email" required> <!-- miss email type maken -->
+                <input type="text" placeholder="email" name="email" required>
                 <textarea type="text" rows="100" placeholder="bericht" name="bericht" required></textarea>
 
                 <input type="submit" value="Plaatsen" name="submit" required>
             </form>
             <?php
-            // if form submitted
             if (isset($_POST['submit'])) {
-                // get input from form into vars
                 $naam = $_POST['naam'];
                 $email = $_POST['email'];
                 $bericht = $_POST['bericht'];
                 date_default_timezone_set("Europe/Amsterdam");
                 $date = date("d-m-Y");
 
+
                 // search for same reacion
                 $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
                 $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
                 $reaction_exist = $stmt->fetch();
 
+
                 if (!$reaction_exist) {
-                    // insert reaction into database
                     $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
                     $stmt = $conn->prepare($query);
                     $stmt->execute([$naam, $email, $bericht, $date]);
                 }
             }
+            ?>
+
+            <p class='color-brown'>Reacties</p>
+
+            <?php
             // getting reaction details
             $stmt = $conn->prepare("SELECT * FROM reacties");
             $stmt->execute();
@@ -88,6 +91,11 @@ require_once 'conn.php';
 
             // print data
             foreach ($reactie as $data) {
+                // button visable for logged in user that have less than 10 rules?
+                if (isset($_SESSION['username']) && $_SESSION['rules'] < 10) {
+                    $delButton = "<a href='deleteRevieuw.php?id=" . $data['id'] . "'>Delete</a>";
+                    $edditButton = "<a href='editRevieuw.php?id=" . $data['id'] . "'>Edit</a>";
+                }
                 $frame = "
                 <div class='reaction'>
                     <div>
@@ -96,13 +104,13 @@ require_once 'conn.php';
                     </div>
                     <p style='white-space: pre-line'>"
                     . $data['bericht'] .
-                    "</p>
-                </div>
+                    "</p>"
+                    . $delButton . $edditButton .
+                    "</div>
                 ";
                 echo $frame;
             }
             ?>
-
         </div>
     </div>
 

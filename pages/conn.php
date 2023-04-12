@@ -5,7 +5,7 @@ if(session_status() === PHP_SESSION_NONE) {
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $db = "tantemeeuw";
 
 // database connection

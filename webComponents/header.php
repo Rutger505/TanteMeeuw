@@ -50,8 +50,6 @@
 if (isset($_SESSION['username'])) {
   echo "logged in as: " . $_SESSION['username'] . "<br>";
   echo "rules: " . $_SESSION['rules'] . "<br>";
-  echo "id: " . $_SESSION['id'] . "<br>";
-  var_dump($_SESSION);
 } else {
   echo "not logged in";
 }

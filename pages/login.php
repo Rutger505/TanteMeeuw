@@ -2,7 +2,7 @@
 session_start();
 require_once 'conn.php';
 if(isset($_SESSION['username'])){
-    header("Location: index.php");
+    header("Location: admin.php");
 }
 ?>
 
