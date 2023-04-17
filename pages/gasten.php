@@ -53,38 +53,13 @@ require_once '../utils/conn.php';
 
             <form class="reactie-form" name="reactie-plaatsen" action="gasten.php" method="POST">
                 <input type="text" placeholder="naam" name="naam" required>
-                <input type="text" placeholder="email" name="email">
+                <input type="text" placeholder="email" name="email" required>
                 <textarea type="text" rows="100" placeholder="bericht" name="bericht" required></textarea>
 
                 <input type="submit" value="Plaatsen" name="submit" required>
             </form>
 
             <p class='color-brown'>Reacties</p>
-
-            <?php
-            if (isset($_POST['submit'])) {
-
-
-                $naam = $_POST['naam'];
-                $email = $_POST['email'];
-                $bericht = $_POST['bericht'];
-                date_default_timezone_set("Europe/Amsterdam");
-                $date = date("d-m-Y");
-
-
-                // search for same reacion
-                $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
-                $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
-                $reaction_exist = $stmt->fetch();
-
-
-                if (!$reaction_exist) {
-                    $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute([$naam, $email, $bericht, $date]);
-                }
-            }
-            ?>
 
             <?php
             // getting reaction details
@@ -113,6 +88,33 @@ require_once '../utils/conn.php';
                 ";
                 echo $frame;
             }
+            ?>
+
+            <?php
+            if (!isset($_POST['submit'])) {
+                exit();
+            }
+
+            $naam = $_POST['naam'];
+            $email = $_POST['email'];
+            $bericht = $_POST['bericht'];
+            date_default_timezone_set("Europe/Amsterdam");
+            $date = date("d-m-Y");
+
+
+            // search for same reacion
+            $stmt = $conn->prepare("SELECT naam, email, bericht FROM reacties WHERE naam=:naam AND bericht=:bericht");
+            $stmt->execute(['naam' => $naam, 'bericht' => $bericht]);
+            $reaction_exist = $stmt->fetch();
+
+
+            if (!$reaction_exist) {
+                $query = "INSERT INTO reacties (naam, email, bericht, date)VALUES (?, ?, ?, ?)";
+                $stmt = $conn->prepare($query);
+                $stmt->execute([$naam, $email, $bericht, $date]);
+                header("Location: gasten.php");
+            }
+
             ?>
         </div>
     </div>
